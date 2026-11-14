@@ -1,0 +1,57 @@
+# Engineer Baah — Apache Server Configuration
+
+# Disable Directory Listings
+Options -Indexes
+
+# Character Encoding
+AddDefaultCharset UTF-8
+
+# Security Headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Protect Data and Hidden Files
+<FilesMatch "^\.|\.jsonl$|\.log$">
+    <IfModule authz_core_module>
+        Require all denied
+    </IfModule>
+    <IfModule !authz_core_module>
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Caching for Static Assets
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/webp "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType text/css "access plus 1 week"
+    ExpiresByType application/javascript "access plus 1 week"
+</IfModule>
+
+# URL Rewriting for Clean URLs
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # If file or directory exists, serve directly
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Clean service URLs: /services/{slug} -> services/{slug}.php
+    RewriteRule ^services/([a-zA-Z0-9_-]+)/?$ services/$1.php [L,QSA]
+
+    # Clean overview & legal routes
+    RewriteRule ^services/?$ capabilities.php [L,QSA]
+    RewriteRule ^privacy/?$ privacy.php [L,QSA]
+    RewriteRule ^terms/?$ terms.php [L,QSA]
+</IfModule>
+
+# Custom 404 Error Document
+ErrorDocument 404 /404.php
+

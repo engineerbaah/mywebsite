@@ -1,0 +1,22 @@
+# Vercel Deployment Ignore Rules
+.vercel/
+.git/
+.github/
+.gemini/
+.idea/
+.vscode/
+
+# Local data & storage
+data/
+storage/
+eb-storage/
+
+# Node / Scratch tools
+node_modules/
+package-lock.json
+
+# Local scripts & artifacts
+scripts/capture.cjs
+*.log
+*.tmp
+

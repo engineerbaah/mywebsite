@@ -1,0 +1,28 @@
+# Environment and secrets
+.env
+.env.local
+*.env
+
+# Vercel local metadata
+.vercel/
+
+# Client inquiry records and private storage
+data/
+storage/
+eb-storage/
+*.jsonl
+
+# Node & Package Managers
+node_modules/
+package-lock.json
+
+# Logs & Temporary files
+*.log
+*.tmp
+.gemini/
+
+# OS and Editor metadata
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
