@@ -166,7 +166,18 @@ function get_inquiry_storage_path(): ?string {
 function asset_url(string $path): string {
     $cleanPath = ltrim($path, '/');
     $fullPath = __DIR__ . '/../' . $cleanPath;
-    $version = file_exists($fullPath) ? (string)filemtime($fullPath) : '2.0';
+    if (file_exists($fullPath)) {
+        $mtime = (int)filemtime($fullPath);
+        // Serverless runtimes (e.g. Vercel Lambda) clamp filemtime to 1540000000;
+        // use a fast content hash for CSS/JS or clamped mtimes so cache-busting always updates.
+        if ($mtime <= 1540000000 || preg_match('/\.(css|js)$/i', $cleanPath)) {
+            $version = substr((string)md5_file($fullPath), 0, 10);
+        } else {
+            $version = (string)$mtime;
+        }
+    } else {
+        $version = '2.1';
+    }
     return site_url($cleanPath) . '?v=' . $version;
 }
 
