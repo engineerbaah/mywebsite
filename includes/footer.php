@@ -45,7 +45,7 @@ $portfolioData = get_portfolio_projects();
 
         <!-- Col 2: Navigation Index -->
         <div>
-          <h4 class="footer-title">Navigation</h4>
+          <h3 class="footer-title">Navigation</h3>
           <ul class="footer-links">
             <li><a href="<?= site_url() ?>" class="footer-link">Overview</a></li>
             <li><a href="<?= site_url('capabilities.php') ?>" class="footer-link">Services &amp; Disciplines</a></li>
@@ -57,7 +57,7 @@ $portfolioData = get_portfolio_projects();
 
         <!-- Col 3: Disciplines -->
         <div>
-          <h4 class="footer-title">Disciplines</h4>
+          <h3 class="footer-title">Disciplines</h3>
           <ul class="footer-links">
             <li><a href="<?= site_url('services/web-engineering-development.php') ?>" class="footer-link">Web Engineering &amp; Development</a></li>
             <li><a href="<?= site_url('services/brand-identity-digital-experience-design.php') ?>" class="footer-link">Brand Identity &amp; Experience Design</a></li>
@@ -68,7 +68,7 @@ $portfolioData = get_portfolio_projects();
 
         <!-- Col 4: Direct Communication -->
         <div>
-          <h4 class="footer-title">Direct Inquiries</h4>
+          <h3 class="footer-title">Direct Inquiries</h3>
           <ul class="footer-links" style="gap: var(--space-xs);">
             <li>
               <span style="font-family: var(--font-heading); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.72rem; color: var(--c-slate-400); display: block;">Email</span>

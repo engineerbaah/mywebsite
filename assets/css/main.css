@@ -37,7 +37,7 @@
   --c-navy-light: #132a4e;
   --c-navy-muted: rgba(11, 31, 58, 0.04);
   --c-sky: #38bdf8;                /* Electric Sky Vitality */
-  --c-sky-deep: #0284c7;           /* Accessible Sky on Light Surfaces (4.5:1+) */
+  --c-sky-deep: #0369a1;           /* Accessible Sky on Light Surfaces (WCAG AA 5.4:1+) */
   --c-sky-hover: #0ea5e9;
   --c-sky-subtle: rgba(56, 189, 248, 0.08);
   --c-sky-glow: rgba(56, 189, 248, 0.28);
@@ -58,7 +58,7 @@
   /* Typography Roles */
   --text-head: var(--c-navy-deep);
   --text-body: var(--c-slate-700);
-  --text-muted: var(--c-slate-500);
+  --text-muted: var(--c-slate-600);
   --text-faint: var(--c-slate-400);
   --text-inverse: var(--c-white);
   --text-inverse-muted: var(--c-slate-300);
@@ -186,12 +186,12 @@ body {
 }
 .skip-link:focus {
   top: 1.5rem;
-  outline: 2px solid var(--c-sky);
+  outline: 2px solid var(--c-sky-deep);
   outline-offset: 2px;
 }
 
 :focus-visible {
-  outline: 2px solid var(--c-sky);
+  outline: 2px solid var(--c-sky-deep);
   outline-offset: 3px;
 }
 
@@ -1275,7 +1275,7 @@ code, kbd, samp, pre {
   font-family: var(--font-mono);
   font-size: 0.6875rem;
   text-transform: uppercase;
-  color: var(--c-slate-400);
+  color: var(--c-slate-600);
 }
 .dossier-spec-val {
   font-size: 0.875rem;
@@ -1877,7 +1877,7 @@ code, kbd, samp, pre {
   font-family: var(--font-body);
   font-size: 0.85rem;
   font-weight: 600;
-  color: #0284c7;
+  color: #0369a1;
   margin-top: 2px;
   line-height: 1.25;
 }
@@ -1888,7 +1888,7 @@ code, kbd, samp, pre {
   font-family: var(--font-mono);
   font-size: 0.72rem;
   font-weight: 600;
-  color: var(--c-slate-500);
+  color: var(--c-slate-600);
   background: var(--surface-subtle, #f8fafc);
   border: 1px solid var(--border-line, #e2e8f0);
   padding: 4px 10px;
@@ -2047,7 +2047,7 @@ code, kbd, samp, pre {
 }
 .floating-media-sub {
   font-size: 0.6875rem;
-  color: var(--c-slate-500);
+  color: var(--c-slate-600);
   margin-bottom: 6px;
 }
 .floating-progress-bar {
@@ -2067,7 +2067,7 @@ code, kbd, samp, pre {
   display: flex;
   justify-content: space-between;
   font-size: 0.6875rem;
-  color: var(--c-slate-400);
+  color: var(--c-slate-600);
   font-family: var(--font-mono);
 }
 .floating-val-highlight {
@@ -2199,7 +2199,7 @@ code, kbd, samp, pre {
   font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.06em;
-  color: var(--c-slate-400);
+  color: var(--c-slate-600);
 }
 .category-tile.is-active .category-tile-code {
   color: #7dd3fc;
@@ -2212,7 +2212,7 @@ code, kbd, samp, pre {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--c-sky);
+  color: #0369a1;
 }
 
 /* Interactive Category Stage / Detail Spotlight */
@@ -2478,7 +2478,7 @@ code, kbd, samp, pre {
 
 .curated-card-client {
   font-size: 0.75rem;
-  color: var(--c-slate-400);
+  color: var(--c-slate-600);
   font-weight: 600;
   margin-bottom: 2px;
 }
@@ -2521,7 +2521,7 @@ code, kbd, samp, pre {
 }
 .card-rating .rating-count {
   font-weight: 500;
-  color: var(--c-slate-400);
+  color: var(--c-slate-600);
   font-size: 0.75rem;
 }
 .card-metric {
@@ -2530,10 +2530,10 @@ code, kbd, samp, pre {
   gap: 4px;
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--c-slate-500);
+  color: var(--c-slate-600);
 }
 .card-metric .metric-icon {
-  color: #0284c7;
+  color: #0369a1;
 }
 
 /* Etech Inspired Benefits Section */

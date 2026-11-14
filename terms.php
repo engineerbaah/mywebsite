@@ -16,8 +16,8 @@ require_once __DIR__ . '/includes/header.php';
     <div class="container-narrow" style="margin-inline: 0;">
       <!-- Breadcrumbs -->
       <nav aria-label="Breadcrumb" style="margin-bottom: var(--space-md);">
-        <ol style="list-style: none; display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--c-slate-400); padding: 0; margin: 0;">
-          <li><a href="<?= site_url() ?>" style="color: var(--c-slate-400); text-decoration: none;">Home</a></li>
+        <ol style="list-style: none; display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--c-slate-600); padding: 0; margin: 0;">
+          <li><a href="<?= site_url() ?>" style="color: var(--c-slate-600); text-decoration: none;">Home</a></li>
           <li aria-hidden="true">&bull;</li>
           <li style="color: var(--c-navy-deep); font-weight: 600;" aria-current="page">Terms &amp; Conditions</li>
         </ol>
@@ -109,20 +109,20 @@ require_once __DIR__ . '/includes/header.php';
       <!-- Sidebar Dossier -->
       <aside style="display: flex; flex-direction: column; gap: var(--space-lg); position: sticky; top: 90px;">
         <div style="background: var(--surface-canvas); border: 1px solid var(--border-line); border-radius: var(--radius-md); padding: var(--space-lg); box-shadow: var(--shadow-sm);">
-          <span style="font-family: var(--font-heading); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--c-slate-400); display: block; margin-bottom: 8px;">
+          <span style="font-family: var(--font-heading); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--c-slate-600); display: block; margin-bottom: 8px;">
             Principal Contact
           </span>
           <p style="font-size: 0.95rem; font-weight: 700; color: var(--c-navy-deep); margin: 0 0 4px;">Isaac Brem Baah</p>
-          <p style="font-size: 0.85rem; color: var(--c-slate-500); margin: 0 0 12px;">ENGINEER BAAH &bull; Kumasi, Ghana</p>
+          <p style="font-size: 0.85rem; color: var(--c-slate-600); margin: 0 0 12px;">ENGINEER BAAH &bull; Kumasi, Ghana</p>
 
-          <span style="font-family: var(--font-heading); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--c-slate-400); display: block; margin-bottom: 4px;">
+          <span style="font-family: var(--font-heading); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--c-slate-600); display: block; margin-bottom: 4px;">
             Direct Email
           </span>
-          <a href="mailto:engineerbaah25@gmail.com" style="font-size: 0.875rem; color: var(--c-sky); text-decoration: none; word-break: break-all; display: block; margin-bottom: 12px;">
+          <a href="mailto:engineerbaah25@gmail.com" style="font-size: 0.875rem; color: var(--c-sky-deep); text-decoration: none; word-break: break-all; display: block; margin-bottom: 12px;">
             engineerbaah25@gmail.com
           </a>
 
-          <span style="font-family: var(--font-heading); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--c-slate-400); display: block; margin-bottom: 4px;">
+          <span style="font-family: var(--font-heading); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--c-slate-600); display: block; margin-bottom: 4px;">
             Direct Telephone
           </span>
           <p style="font-size: 0.875rem; color: var(--c-navy-deep); font-weight: 600; margin: 0;">

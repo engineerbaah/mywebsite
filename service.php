@@ -63,10 +63,10 @@ if (!empty($service['matching_projects'])) {
   <div class="container">
     <!-- Breadcrumb Trail -->
     <nav aria-label="Breadcrumb" style="margin-bottom: var(--space-md);">
-      <ol style="list-style: none; display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--c-slate-400); padding: 0; margin: 0;">
-        <li><a href="<?= site_url() ?>" style="color: var(--c-slate-400); text-decoration: none;">Home</a></li>
+      <ol style="list-style: none; display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--c-slate-600); padding: 0; margin: 0;">
+        <li><a href="<?= site_url() ?>" style="color: var(--c-slate-600); text-decoration: none;">Home</a></li>
         <li aria-hidden="true">&bull;</li>
-        <li><a href="<?= site_url('capabilities.php') ?>" style="color: var(--c-slate-400); text-decoration: none;">Services</a></li>
+        <li><a href="<?= site_url('capabilities.php') ?>" style="color: var(--c-slate-600); text-decoration: none;">Services</a></li>
         <li aria-hidden="true">&bull;</li>
         <li style="color: var(--c-navy-deep); font-weight: 600;" aria-current="page"><?= e($service['title']) ?></li>
       </ol>
@@ -169,14 +169,14 @@ if (!empty($service['matching_projects'])) {
 
         <!-- Deliverables Summary -->
         <div style="background: var(--surface-canvas); border: 1px solid var(--border-line); border-radius: var(--radius-md); padding: var(--space-lg); box-shadow: var(--shadow-sm);">
-          <span style="font-family: var(--font-heading); font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--c-slate-400); display: block; margin-bottom: 6px;">
+          <span style="font-family: var(--font-heading); font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--c-slate-600); display: block; margin-bottom: 6px;">
             Standard Deliverables
           </span>
           <p style="font-size: 0.95rem; font-weight: 700; color: var(--c-navy-deep); line-height: 1.5; margin-bottom: var(--space-md);">
             <?= e($service['deliverables']) ?>
           </p>
 
-          <span style="font-family: var(--font-heading); font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--c-slate-400); display: block; margin-bottom: 8px;">
+          <span style="font-family: var(--font-heading); font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--c-slate-600); display: block; margin-bottom: 8px;">
             Tools &amp; Environment
           </span>
           <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: var(--space-lg);">
@@ -281,7 +281,7 @@ if (!empty($service['matching_projects'])) {
               loading="lazy"
               style="width: 100%; height: auto; display: block; aspect-ratio: 16/10; object-fit: cover;"
             >
-            <span class="discipline-code" style="position: absolute; top: 12px; left: 12px; background: rgba(13, 20, 36, 0.85); backdrop-filter: blur(4px);">
+            <span class="discipline-code" style="position: absolute; top: 12px; left: 12px; background: rgba(13, 20, 36, 0.85); backdrop-filter: blur(4px); color: #7dd3fc; padding: 4px 8px; border-radius: 4px;">
               <?= e($project['category']) ?>
             </span>
           </div>

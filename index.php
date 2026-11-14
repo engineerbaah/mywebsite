@@ -244,7 +244,7 @@ $disciplines = get_core_disciplines();
             <?php endif; ?>
 
             <div style="margin-bottom: var(--space-md);">
-              <h4 style="font-size: 0.8125rem; font-family: var(--font-heading); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--c-slate-500); margin-bottom: 8px;">
+              <h4 style="font-size: 0.8125rem; font-family: var(--font-heading); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--c-slate-600); margin-bottom: 8px;">
                 Key Capabilities
               </h4>
               <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px;">
@@ -269,7 +269,7 @@ $disciplines = get_core_disciplines();
 
           <div style="display: flex; flex-direction: column; gap: var(--space-md); justify-content: space-between;">
             <div style="background: var(--surface-alt); border: 1px solid var(--border-line); border-radius: var(--radius-sm); padding: var(--space-lg);">
-              <span style="font-family: var(--font-heading); font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--c-slate-400); display: block; margin-bottom: 4px;">
+              <span style="font-family: var(--font-heading); font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--c-slate-600); display: block; margin-bottom: 4px;">
                 Standard Deliverables
               </span>
               <p style="font-size: 0.9375rem; font-weight: 700; color: var(--c-navy-deep); line-height: 1.5; margin: 0;">
@@ -330,9 +330,9 @@ $disciplines = get_core_disciplines();
         <div>
           <span class="spotlight-eyebrow">FEATURED PROJECT</span>
 
-          <h3 id="featured-heading" class="spotlight-title">
+          <h2 id="featured-heading" class="spotlight-title">
             SKB Construction &amp; Real Estate
-          </h3>
+          </h2>
 
           <p class="spotlight-prose">
             A high-credibility digital platform engineered for a premier civil engineering and real estate enterprise, presenting multi-acre commercial developments, project timelines, and high-value investor inquiry funnels.
@@ -431,7 +431,7 @@ $disciplines = get_core_disciplines();
 
             <div class="curated-card-body">
               <span class="curated-card-client"><?= e($proj['client']) ?></span>
-              <h4 class="curated-card-title"><a href="<?= site_url('work.php#' . e($pId)) ?>" style="color: inherit; text-decoration: none;"><?= e($proj['title']) ?></a></h4>
+              <h3 class="curated-card-title"><a href="<?= site_url('work.php#' . e($pId)) ?>" style="color: inherit; text-decoration: none;"><?= e($proj['title']) ?></a></h3>
               <p class="curated-card-desc">
                 <?= e($proj['subtitle']) ?>
               </p>
@@ -596,12 +596,12 @@ $disciplines = get_core_disciplines();
           &ldquo;Engineer Baah gave our civil engineering and real estate projects the digital credibility we lacked. The speed is phenomenal, and property buyers now reach our team directly through our portfolio funnels without friction.&rdquo;
         </p>
         <div style="display: flex; align-items: center; gap: 12px; border-top: 1px solid var(--border-line); padding-top: var(--space-sm);">
-          <div style="width: 40px; height: 40px; border-radius: 50%; background: #e0f2fe; color: #0284c7; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.875rem;">
+          <div style="width: 40px; height: 40px; border-radius: 50%; background: #e0f2fe; color: #0369a1; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.875rem;">
             SK
           </div>
           <div>
             <div style="font-size: 0.875rem; font-weight: 800; color: var(--c-navy-deep);">SKB Executive Management</div>
-            <div style="font-size: 0.75rem; color: var(--c-slate-400);">SKB Construction &amp; Real Estate</div>
+            <div style="font-size: 0.75rem; color: var(--c-slate-600);">SKB Construction &amp; Real Estate</div>
           </div>
         </div>
       </div>
@@ -613,12 +613,12 @@ $disciplines = get_core_disciplines();
           &ldquo;We needed a unified digital ecosystem connecting corporate tools and student learning resources. Isaac delivered a clean, modular platform with zero framework baggage. Highly recommended for complex systems.&rdquo;
         </p>
         <div style="display: flex; align-items: center; gap: 12px; border-top: 1px solid var(--border-line); padding-top: var(--space-sm);">
-          <div style="width: 40px; height: 40px; border-radius: 50%; background: #ede9fe; color: #7c3aed; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.875rem;">
+          <div style="width: 40px; height: 40px; border-radius: 50%; background: #ede9fe; color: #6d28d9; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.875rem;">
             JW
           </div>
           <div>
             <div style="font-size: 0.875rem; font-weight: 800; color: var(--c-navy-deep);">Jwils Operations Lead</div>
-            <div style="font-size: 0.75rem; color: var(--c-slate-400);">Jwils Educational &amp; Corporate Systems</div>
+            <div style="font-size: 0.75rem; color: var(--c-slate-600);">Jwils Educational &amp; Corporate Systems</div>
           </div>
         </div>
       </div>
@@ -630,12 +630,12 @@ $disciplines = get_core_disciplines();
           &ldquo;Spotless required a brand identity and web flagship that broke away from generic agency clones. Isaac designed a mathematical type system and fluid animations that made our agency look world-class from day one.&rdquo;
         </p>
         <div style="display: flex; align-items: center; gap: 12px; border-top: 1px solid var(--border-line); padding-top: var(--space-sm);">
-          <div style="width: 40px; height: 40px; border-radius: 50%; background: #fef3c7; color: #d97706; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.875rem;">
+          <div style="width: 40px; height: 40px; border-radius: 50%; background: #fef3c7; color: #92400e; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.875rem;">
             SD
           </div>
           <div>
             <div style="font-size: 0.875rem; font-weight: 800; color: var(--c-navy-deep);">Creative Director</div>
-            <div style="font-size: 0.75rem; color: var(--c-slate-400);">Spotless Digital Agency</div>
+            <div style="font-size: 0.75rem; color: var(--c-slate-600);">Spotless Digital Agency</div>
           </div>
         </div>
       </div>

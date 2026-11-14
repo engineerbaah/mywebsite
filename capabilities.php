@@ -107,7 +107,7 @@ $disciplines = get_core_disciplines();
             <div style="display: flex; flex-direction: column; gap: var(--space-md); justify-content: space-between;">
               <div style="display: flex; flex-direction: column; gap: var(--space-md);">
                 <div style="background-color: var(--surface-alt); border: 1px solid var(--border-line); border-radius: var(--radius-sm); padding: var(--space-lg);">
-                  <div style="font-family: var(--font-heading); font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--c-slate-400); margin-bottom: 6px;">
+                  <div style="font-family: var(--font-heading); font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--c-slate-600); margin-bottom: 6px;">
                     Standard Deliverables
                   </div>
                   <div style="font-size: 0.9375rem; color: var(--c-navy-deep); font-weight: 700; line-height: 1.5;">
@@ -116,7 +116,7 @@ $disciplines = get_core_disciplines();
                 </div>
 
                 <div style="border: 1px dashed var(--border-line); border-radius: var(--radius-sm); padding: var(--space-md);">
-                  <div style="font-family: var(--font-heading); font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--c-slate-400); margin-bottom: 6px;">
+                  <div style="font-family: var(--font-heading); font-size: 0.6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--c-slate-600); margin-bottom: 6px;">
                     Quality Assurance
                   </div>
                   <p style="font-size: 0.8125rem; color: var(--text-body); line-height: 1.5; margin: 0;">
