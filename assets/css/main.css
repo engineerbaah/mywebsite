@@ -149,6 +149,7 @@ html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   color-scheme: light;
+  overflow-x: clip;
 }
 
 body {
@@ -161,7 +162,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
+  overflow-x: clip;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -682,7 +683,14 @@ code, kbd, samp, pre {
               color var(--dur-fast) var(--ease-out);
   text-decoration: none;
   white-space: nowrap;
+  text-align: center;
+  max-width: 100%;
   min-height: 48px;
+}
+@media (max-width: 480px) {
+  .btn {
+    white-space: normal;
+  }
 }
 .btn:active {
   transform: scale(0.98);
@@ -1132,7 +1140,7 @@ code, kbd, samp, pre {
 
 .case-study-spread {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-xl);
   align-items: center;
   padding-bottom: clamp(2rem, 5vw, 4rem);
@@ -1140,11 +1148,11 @@ code, kbd, samp, pre {
 }
 @media (min-width: 960px) {
   .case-study-spread {
-    grid-template-columns: 1.25fr 0.95fr;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.95fr);
     gap: var(--space-3xl);
   }
   .case-study-spread.is-reversed {
-    grid-template-columns: 0.95fr 1.25fr;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.25fr);
   }
   .case-study-spread.is-reversed .case-study-media-col {
     order: 2;
@@ -1194,6 +1202,7 @@ code, kbd, samp, pre {
 
 .browser-url-bar {
   flex: 1;
+  min-width: 0;
   background-color: var(--surface-canvas);
   border: 1px solid var(--border-line);
   border-radius: var(--radius-xs);
@@ -1224,6 +1233,10 @@ code, kbd, samp, pre {
 }
 
 /* Dossier Column */
+.case-study-media-col,
+.case-study-dossier-col {
+  min-width: 0;
+}
 .case-study-dossier-col {
   display: flex;
   flex-direction: column;
@@ -1231,6 +1244,7 @@ code, kbd, samp, pre {
 
 .dossier-meta {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: var(--space-xs);
   margin-bottom: var(--space-xs);
@@ -1811,6 +1825,19 @@ code, kbd, samp, pre {
 .hero-portrait-stage:hover .hero-backdrop-glow {
   transform: scale(1.03) rotate(1deg);
 }
+/* Keep the organic glow inside the container gutter on small screens
+   so it never pushes the page wider than the viewport. */
+@media (max-width: 767px) {
+  .hero-backdrop-glow {
+    top: -18px;
+    right: -10px;
+    bottom: -14px;
+    left: -10px;
+  }
+  .hero-portrait-stage:hover .hero-backdrop-glow {
+    transform: none;
+  }
+}
 
 .hero-portrait-stage .hero-image-wrapper {
   position: relative;
@@ -2220,16 +2247,19 @@ code, kbd, samp, pre {
   background: var(--surface-canvas);
   border: 1px solid var(--border-line);
   border-radius: var(--radius-md);
-  padding: clamp(1.5rem, 3.5vw, 2.5rem);
+  padding: clamp(1.15rem, 3.5vw, 2.5rem);
   box-shadow: var(--shadow-sm);
   margin-top: var(--space-lg);
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-xl);
+}
+.category-stage > * {
+  min-width: 0;
 }
 @media (min-width: 860px) {
   .category-stage {
-    grid-template-columns: 1.25fr 0.85fr;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.85fr);
     align-items: center;
   }
 }
@@ -2885,22 +2915,28 @@ code, kbd, samp, pre {
 
 .service-detail-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-xl);
   align-items: start;
 }
+.service-detail-grid > * {
+  min-width: 0;
+}
 @media (min-width: 900px) {
   .service-detail-grid {
-    grid-template-columns: 1.35fr 1fr;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
     gap: var(--space-2xl);
   }
 }
 
 .legal-layout-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-xl);
   align-items: start;
+}
+.legal-layout-grid > * {
+  min-width: 0;
 }
 @media (min-width: 860px) {
   .legal-layout-grid {

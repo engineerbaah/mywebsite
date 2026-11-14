@@ -588,7 +588,7 @@ $disciplines = get_core_disciplines();
       </p>
     </div>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-lg); margin-top: var(--space-xl);">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: var(--space-lg); margin-top: var(--space-xl);">
       <!-- Review 1: SKB Construction -->
       <div style="background: var(--surface-canvas); border: 1px solid var(--border-line); border-radius: 18px; padding: var(--space-xl); box-shadow: 0 4px 16px rgba(11, 31, 58, 0.04); display: flex; flex-direction: column;">
         <div style="color: #f59e0b; font-size: 1.1rem; margin-bottom: var(--space-sm);">★★★★★</div>

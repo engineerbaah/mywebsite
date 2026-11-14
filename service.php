@@ -223,7 +223,7 @@ if (!empty($service['matching_projects'])) {
       <p class="section-lead">A disciplined, transparent execution cycle designed to eliminate friction, respect deadlines, and ensure production quality.</p>
     </div>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-lg);">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: var(--space-lg);">
       <div style="background: var(--surface-canvas); border: 1px solid var(--border-line); border-radius: var(--radius-md); padding: var(--space-lg); box-shadow: var(--shadow-sm);">
         <span style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: var(--c-sky); display: block; margin-bottom: var(--space-xs);">01</span>
         <h3 style="font-size: 1.1rem; color: var(--c-navy-deep); font-weight: 700; margin-bottom: var(--space-xs);">Discovery &amp; Scope</h3>
@@ -271,7 +271,7 @@ if (!empty($service['matching_projects'])) {
       <p class="section-lead">Real digital systems and platforms delivered within this discipline.</p>
     </div>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--space-xl);">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: var(--space-xl);">
       <?php foreach ($relevantProjects as $project): ?>
         <article class="portfolio-card">
           <div class="portfolio-card-media" data-project-trigger="<?= e($project['id']) ?>" style="position: relative; cursor: pointer;">
