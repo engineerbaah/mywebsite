@@ -22,6 +22,8 @@ $routes = [
     // Primary Pages
     'capabilities' => 'capabilities.php',
     'capabilities.php' => 'capabilities.php',
+    'packages' => 'packages.php',
+    'packages.php' => 'packages.php',
     'work' => 'work.php',
     'work.php' => 'work.php',
     'about' => 'about.php',

@@ -75,6 +75,7 @@ if (!isset($ogImage)) {
   if (!isset($breadcrumbItems) && $pageSlug !== 'home') {
       $friendlyName = match ($pageSlug) {
           'capabilities' => 'Services & Disciplines',
+          'packages' => 'Packages & Pricing',
           'work' => 'Selected Work',
           'about' => 'About Engineer Baah',
           'contact' => 'Contact',
@@ -226,6 +227,7 @@ if (!isset($ogImage)) {
         <ul class="nav-list">
           <li><a href="<?= site_url() ?>" <?= is_active($pageSlug, 'home') ?>>Overview</a></li>
           <li><a href="<?= site_url('capabilities.php') ?>" <?= is_active($pageSlug, 'capabilities') ?>>Services</a></li>
+          <li><a href="<?= site_url('packages.php') ?>" <?= is_active($pageSlug, 'packages') ?>>Packages</a></li>
           <li><a href="<?= site_url('work.php') ?>" <?= is_active($pageSlug, 'work') ?>>Selected Work</a></li>
           <li><a href="<?= site_url('about.php') ?>" <?= is_active($pageSlug, 'about') ?>>About</a></li>
           <li><a href="<?= site_url('contact.php') ?>" <?= is_active($pageSlug, 'contact') ?>>Contact</a></li>
@@ -287,6 +289,7 @@ if (!isset($ogImage)) {
         <ul class="mobile-nav-list">
           <li><a href="<?= site_url() ?>" class="mobile-nav-link <?= $pageSlug === 'home' ? 'is-active' : '' ?>">Overview</a></li>
           <li><a href="<?= site_url('capabilities.php') ?>" class="mobile-nav-link <?= $pageSlug === 'capabilities' ? 'is-active' : '' ?>">Services</a></li>
+          <li><a href="<?= site_url('packages.php') ?>" class="mobile-nav-link <?= $pageSlug === 'packages' ? 'is-active' : '' ?>">Packages &amp; Pricing</a></li>
           <li><a href="<?= site_url('work.php') ?>" class="mobile-nav-link <?= $pageSlug === 'work' ? 'is-active' : '' ?>">Selected Work</a></li>
           <li><a href="<?= site_url('about.php') ?>" class="mobile-nav-link <?= $pageSlug === 'about' ? 'is-active' : '' ?>">About</a></li>
           <li><a href="<?= site_url('contact.php') ?>" class="mobile-nav-link <?= $pageSlug === 'contact' ? 'is-active' : '' ?>">Contact</a></li>

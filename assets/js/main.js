@@ -292,7 +292,7 @@
 
     let enquiryLastFocused = null;
 
-    function openEnquiryModal(prefillValue, projectName) {
+    function openEnquiryModal(prefillValue, projectName, packageName) {
       // Close project modal if open
       if (window.__closeProjectModal) {
         window.__closeProjectModal();
@@ -302,6 +302,7 @@
 
       let targetService = prefillValue || '';
       let refProject = projectName || '';
+      let refPackage = packageName || '';
 
       // Check if prefillValue is a project in portfolioData
       if (portfolioData) {
@@ -332,8 +333,10 @@
         }
       }
 
-      // Prefill message if referencing a project
-      if (refProject && messageInput) {
+      // Prefill message if referencing a package or project
+      if (refPackage && messageInput) {
+        messageInput.value = `Hello Engineer Baah, I would like to enquire about the ${refPackage} package. Here are my project details:\n\n`;
+      } else if (refProject && messageInput) {
         messageInput.value = `Hello Engineer Baah, I am interested in building a project similar to "${refProject}". Here are my requirements:\n\n`;
       }
 
@@ -365,7 +368,8 @@
         e.preventDefault();
         const prefill = trigger.getAttribute('data-enquiry-service') || trigger.getAttribute('data-open-enquiry') || '';
         const project = trigger.getAttribute('data-enquiry-project') || '';
-        openEnquiryModal(prefill, project);
+        const pkg = trigger.getAttribute('data-enquiry-package') || '';
+        openEnquiryModal(prefill, project, pkg);
       }
     });
 

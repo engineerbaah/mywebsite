@@ -24,9 +24,14 @@ $disciplines = get_core_disciplines();
         Every service represents a focused discipline designed to help your business establish its online presence, operate efficiently, reach the right audience, and grow with confidence.
       </p>
 
-      <button type="button" class="btn btn-primary btn-pill" data-open-enquiry="">
-        Start a Project Enquiry &rarr;
-      </button>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+        <a href="<?= site_url('packages.php') ?>" class="btn btn-primary btn-pill">
+          View Packages &amp; Pricing &rarr;
+        </a>
+        <button type="button" class="btn btn-secondary btn-pill" data-open-enquiry="">
+          Start a Project Enquiry
+        </button>
+      </div>
     </div>
   </div>
 </section>

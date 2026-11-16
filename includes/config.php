@@ -573,3 +573,325 @@ function get_discipline_by_id(string $id): ?array {
     }
     return null;
 }
+
+/**
+ * Retrieve complete structured service packages, bundles, digital solutions, and project terms
+ */
+function get_service_packages(): array {
+    return [
+        'intro' => [
+            'title' => 'Website Development, Branding & Digital Solutions',
+            'lead' => 'I build professional digital experiences that help businesses establish their identity, connect with customers and operate more effectively.',
+            'sublead' => 'All packages have defined deliverables. Projects that require features or functionality outside the listed scope are handled as custom projects.'
+        ],
+        'business_websites' => [
+            'id' => 'website-packages',
+            'number' => '01',
+            'title' => 'Business & Professional Website Packages',
+            'service_category' => 'Web Engineering & Development',
+            'note' => 'Custom web applications, membership systems, booking platforms, complex portals, advanced dashboards and substantial backend functionality are quoted separately.',
+            'tiers' => [
+                [
+                    'name' => 'Starter Website',
+                    'price' => 'GH₵1,500',
+                    'price_num' => '1500',
+                    'badge' => 'Essential Foundation',
+                    'featured' => false,
+                    'audience' => 'For startups, small businesses and professionals who need a credible online presence.',
+                    'includes_label' => 'Includes:',
+                    'features' => [
+                        'Up to 6 pages: Home, About, Services, Contact, Privacy Policy & Terms & Conditions',
+                        'Responsive mobile, tablet and desktop design',
+                        'Professional, clean user interface',
+                        'WhatsApp integration',
+                        'Contact form',
+                        'Social media links',
+                        'Basic on-page SEO',
+                        'SSL security',
+                        'One-year standard hosting',
+                        'One-year standard domain registration'
+                    ],
+                    'subpages' => ['Home', 'About', 'Services', 'Contact', 'Privacy Policy', 'Terms & Conditions']
+                ],
+                [
+                    'name' => 'Growth Website',
+                    'price' => 'GH₵2,500',
+                    'price_num' => '2500',
+                    'badge' => 'Most Popular',
+                    'featured' => true,
+                    'audience' => 'For established businesses looking for a more engaging website and better customer interaction.',
+                    'includes_label' => 'Everything in Starter, plus:',
+                    'features' => [
+                        'Up to 10 pages in total',
+                        'More refined, customised UI/UX',
+                        'Advanced page layouts and sections',
+                        'Interactive elements and subtle animations',
+                        'Image galleries or project showcases',
+                        'Testimonials and FAQ sections',
+                        'Enhanced contact and enquiry forms',
+                        'Google Analytics integration',
+                        'Improved on-page SEO setup',
+                        'Two rounds of design revisions'
+                    ]
+                ],
+                [
+                    'name' => 'Premium Website',
+                    'price' => 'GH₵4,000',
+                    'price_num' => '4000',
+                    'badge' => 'Comprehensive Flagship',
+                    'featured' => false,
+                    'audience' => 'For businesses and organisations that need a more comprehensive and highly customised online presence.',
+                    'includes_label' => 'Everything in Growth, plus:',
+                    'features' => [
+                        'Up to 15 pages in total',
+                        'Bespoke website design',
+                        'Advanced interactions and animations',
+                        'Enhanced user experience and navigation',
+                        'Advanced enquiry and lead-generation features',
+                        'Additional third-party integrations where applicable',
+                        'Enhanced performance and technical SEO setup',
+                        'Website launch support',
+                        'Basic website management training',
+                        'Priority project delivery'
+                    ]
+                ]
+            ]
+        ],
+        'ecommerce_websites' => [
+            'id' => 'ecommerce-packages',
+            'number' => '02',
+            'title' => 'E-Commerce Website Packages',
+            'service_category' => 'Web Engineering & Development',
+            'note' => 'Payment gateway approval, transaction charges, third-party service fees and other external charges are the client\'s responsibility. Multi-vendor marketplaces and complex logistics systems are custom projects.',
+            'tiers' => [
+                [
+                    'name' => 'E-commerce Starter',
+                    'price' => 'GH₵1,500',
+                    'price_num' => '1500',
+                    'badge' => 'Catalogue & Order Flow',
+                    'featured' => false,
+                    'audience' => 'For businesses that want to display products and receive orders without online payment processing.',
+                    'includes_label' => 'Includes:',
+                    'features' => [
+                        'Product catalogue and category listings',
+                        'Up to 20 products uploaded at launch',
+                        'Product images, descriptions and prices',
+                        'Guest shopping and ordering',
+                        'Orders sent through WhatsApp or email',
+                        'Mobile-responsive storefront',
+                        'Contact and business information',
+                        'Basic SEO setup',
+                        'One-year standard hosting',
+                        'One-year standard domain registration (domain allowance up to GH₵300)'
+                    ],
+                    'not_included' => 'Customer accounts, shopping cart checkout, online payment gateway or product-management dashboard.'
+                ],
+                [
+                    'name' => 'E-commerce Growth',
+                    'price' => 'GH₵2,500',
+                    'price_num' => '2500',
+                    'badge' => 'Managed Storefront',
+                    'featured' => true,
+                    'audience' => 'For businesses ready to manage their products and customer orders through a dedicated online store.',
+                    'includes_label' => 'Everything in Starter, plus:',
+                    'features' => [
+                        'Up to 30 products uploaded at launch',
+                        'Customer registration and login',
+                        'Shopping cart',
+                        'Checkout and order placement',
+                        'Customer account area',
+                        'Admin dashboard',
+                        'Product and category management',
+                        'Order management',
+                        'Manual payment instructions and order confirmation',
+                        'Basic inventory management'
+                    ],
+                    'not_included' => 'Automated online payment gateway integration.'
+                ],
+                [
+                    'name' => 'E-commerce Premium',
+                    'price' => 'GH₵4,000',
+                    'price_num' => '4000',
+                    'badge' => 'Full Online Payments',
+                    'featured' => false,
+                    'audience' => 'For businesses that want a more complete online shopping experience with online payment capabilities.',
+                    'includes_label' => 'Everything in Growth, plus:',
+                    'features' => [
+                        'Up to 100 products uploaded at launch',
+                        'Online payment gateway integration',
+                        'Guest checkout and registered customer checkout',
+                        'Payment status tracking',
+                        'Advanced order management',
+                        'Inventory management',
+                        'Super Admin and Staff Admin roles with different permissions',
+                        'Enhanced storefront UI/UX',
+                        'Improved product discovery and filtering',
+                        'Basic delivery and shipping configuration',
+                        'Store management training'
+                    ]
+                ]
+            ]
+        ],
+        'branding_design' => [
+            'id' => 'branding-packages',
+            'number' => '03',
+            'title' => 'Branding & Design Packages',
+            'service_category' => 'Brand Identity & Digital Experience Design',
+            'note' => 'Printing, physical materials, advertising campaigns and additional design materials are not included.',
+            'tiers' => [
+                [
+                    'name' => 'Starter Identity',
+                    'price' => 'GH₵250',
+                    'price_num' => '250',
+                    'badge' => 'Core Logo Suite',
+                    'featured' => false,
+                    'audience' => 'For new businesses that need a professional logo.',
+                    'includes_label' => 'Includes:',
+                    'features' => [
+                        'Primary logo design',
+                        'Black-and-white logo version',
+                        'Reversed logo version',
+                        'Basic logo icon',
+                        'PNG, JPG and SVG formats',
+                        'Two revision rounds'
+                    ]
+                ],
+                [
+                    'name' => 'Growth Identity',
+                    'price' => 'GH₵375',
+                    'price_num' => '375',
+                    'badge' => 'Recommended Identity',
+                    'featured' => true,
+                    'audience' => 'For businesses that want a consistent visual identity.',
+                    'includes_label' => 'Everything in Starter, plus:',
+                    'features' => [
+                        'Brand colour palette',
+                        'Typography selection',
+                        'Business card design',
+                        'Social media profile image',
+                        'Social media cover design',
+                        'Basic brand usage guidance'
+                    ]
+                ],
+                [
+                    'name' => 'Premium Identity',
+                    'price' => 'GH₵500',
+                    'price_num' => '500',
+                    'badge' => 'Complete Brand Kit',
+                    'featured' => false,
+                    'audience' => 'For businesses that want a more complete starter brand identity.',
+                    'includes_label' => 'Everything in Growth, plus:',
+                    'features' => [
+                        'Professional letterhead design',
+                        'Email signature design',
+                        'Additional logo variations',
+                        'Compact brand guidelines document',
+                        'Organised final brand asset package'
+                    ]
+                ]
+            ]
+        ],
+        'launch_bundles' => [
+            'id' => 'launch-bundles',
+            'number' => '04',
+            'title' => 'Brand & Website Launch Bundles',
+            'lead' => 'For businesses that need both a visual identity and a website, I combine the selected branding package with the selected website package.',
+            'rows' => [
+                [
+                    'name' => 'Starter Launch',
+                    'website_tier' => 'Starter Website',
+                    'website_price' => 'GH₵1,500',
+                    'branding_tier' => 'Starter Identity',
+                    'branding_price' => 'GH₵250',
+                    'total' => 'GH₵1,750'
+                ],
+                [
+                    'name' => 'Growth Launch',
+                    'website_tier' => 'Growth Website',
+                    'website_price' => 'GH₵2,500',
+                    'branding_tier' => 'Growth Identity',
+                    'branding_price' => 'GH₵375',
+                    'total' => 'GH₵2,875',
+                    'featured' => true
+                ],
+                [
+                    'name' => 'Premium Launch',
+                    'website_tier' => 'Premium Website',
+                    'website_price' => 'GH₵4,000',
+                    'branding_tier' => 'Premium Identity',
+                    'branding_price' => 'GH₵500',
+                    'total' => 'GH₵4,500'
+                ]
+            ],
+            'notes' => [
+                'These are combined package prices, not free branding add-ons. Each component retains its own deliverables and limits.',
+                'The same arrangement can be used with an e-commerce package.'
+            ]
+        ],
+        'digital_solutions' => [
+            'id' => 'digital-solutions',
+            'number' => '05',
+            'title' => 'Digital Solutions',
+            'headline' => 'Custom Digital Solutions',
+            'starting_price' => 'Starting from GH₵5,000',
+            'price_num' => '5000',
+            'audience' => 'For businesses that require more than a standard website.',
+            'solutions' => [
+                'Business management systems',
+                'Custom web applications',
+                'Workflow automation',
+                'Administrative dashboards',
+                'Customer and staff portals',
+                'API integrations',
+                'Business process digitisation',
+                'AI-powered business solutions'
+            ],
+            'note' => 'Every project is assessed individually. Final pricing depends on requirements, complexity, integrations, development time and maintenance needs.'
+        ],
+        'additional_services' => [
+            'id' => 'additional-services',
+            'number' => '06',
+            'title' => 'Additional Services & Custom Projects',
+            'lead' => 'The following are not automatically included in standard packages:',
+            'items' => [
+                'Blog and content management systems',
+                'Advanced booking and reservation systems',
+                'Custom dashboards and reporting',
+                'Additional pages beyond package limits',
+                'Advanced payment integrations',
+                'Copywriting and professional photography',
+                'Ongoing website maintenance',
+                'Additional product uploads after launch'
+            ],
+            'highlights' => [
+                [
+                    'label' => 'Blog-enabled websites',
+                    'detail' => 'Starting from GH₵3,000, depending on the content management and publishing functionality required.'
+                ],
+                [
+                    'label' => 'Custom projects',
+                    'detail' => 'Priced after requirements and scope assessment.'
+                ]
+            ]
+        ],
+        'project_terms' => [
+            'id' => 'project-terms',
+            'number' => '07',
+            'title' => 'Project Terms',
+            'terms' => [
+                'A 60% deposit is required before work begins.',
+                'The remaining 40% is payable before final launch and handover.',
+                'Clients provide their business information, text, images and other required content unless content creation is separately agreed.',
+                'Each package has a defined revision allowance.',
+                'Additional features and work outside the agreed scope attract additional charges.',
+                'Standard domain registration and hosting are included for the first year where specified. Renewals are billed separately.',
+                'Domain registration is subject to availability. Premium domains exceeding the GH₵300 allowance attract an additional charge.',
+                'Privacy Policy and Terms & Conditions pages use client-approved standard content or templates. Legal advice and legal drafting are not included.',
+                'A post-launch bug-fix period and the exact support terms will be stated in the project agreement.',
+                'Project timelines are agreed after the scope, content and deposit have been confirmed.'
+            ],
+            'commitment_label' => 'My commitment:',
+            'commitment_text' => 'Quality work, clear scope, professional execution and digital solutions that serve real business needs.'
+        ]
+    ];
+}

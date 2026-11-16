@@ -49,6 +49,7 @@ $portfolioData = get_portfolio_projects();
           <ul class="footer-links">
             <li><a href="<?= site_url() ?>" class="footer-link">Overview</a></li>
             <li><a href="<?= site_url('capabilities.php') ?>" class="footer-link">Services &amp; Disciplines</a></li>
+            <li><a href="<?= site_url('packages.php') ?>" class="footer-link">Packages &amp; Pricing</a></li>
             <li><a href="<?= site_url('work.php') ?>" class="footer-link">Selected Work</a></li>
             <li><a href="<?= site_url('about.php') ?>" class="footer-link">Approach &amp; About</a></li>
             <li><a href="<?= site_url('contact.php') ?>" class="footer-link">Contact</a></li>

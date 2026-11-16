@@ -83,6 +83,14 @@ if (!empty($service['matching_projects'])) {
         <?= e($service['tagline']) ?>
       </p>
 
+      <?php
+      $pkgAnchor = match ($service['id']) {
+          'web-engineering-development' => '#website-packages',
+          'brand-identity-digital-experience-design' => '#branding-packages',
+          'it-solutions-technology-management' => '#digital-solutions',
+          default => ''
+      };
+      ?>
       <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
         <button
           type="button"
@@ -92,6 +100,9 @@ if (!empty($service['matching_projects'])) {
         >
           Enquire About This Service &rarr;
         </button>
+        <a href="<?= site_url('packages.php' . $pkgAnchor) ?>" class="btn btn-secondary btn-pill">
+          View Packages &amp; Pricing &rarr;
+        </a>
         <a href="<?= site_url('capabilities.php') ?>" class="btn btn-secondary btn-pill">
           &larr; All Services
         </a>

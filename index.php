@@ -175,9 +175,14 @@ $disciplines = get_core_disciplines();
           Four dedicated engineering and creative areas delivering end-to-end solutions.
         </p>
       </div>
-      <a href="<?= site_url('capabilities.php') ?>" class="btn btn-secondary btn-pill">
-        View All Services &rarr;
-      </a>
+      <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+        <a href="<?= site_url('packages.php') ?>" class="btn btn-primary btn-pill">
+          Packages &amp; Pricing &rarr;
+        </a>
+        <a href="<?= site_url('capabilities.php') ?>" class="btn btn-secondary btn-pill">
+          View All Services &rarr;
+        </a>
+      </div>
     </div>
 
     <!-- 4 Squircle Interactive Category Tiles (With Cursor-Following Hover Preview) -->
