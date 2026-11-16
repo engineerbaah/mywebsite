@@ -115,40 +115,17 @@ $record = [
 ];
 
 $storageFilePath = get_inquiry_storage_path();
+$saved = false;
 
-// Fail safely: Never write to web-accessible locations if secure storage path cannot be resolved
-if ($storageFilePath === null) {
-    error_log('[SECURITY ALERT] Secure inquiry storage location is unavailable or not writable.');
-    http_response_code(500);
-    if ($isAjax) {
-        header('Content-Type: application/json');
-        echo json_encode(['success' => false, 'message' => 'Transmission queue temporarily unavailable. Please email directly.']);
-    } else {
-        header('Location: ' . site_url('contact.php?status=storage_error'));
+if ($storageFilePath !== null) {
+    $jsonLine = json_encode($record, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . "\n";
+    $saved = (@file_put_contents($storageFilePath, $jsonLine, FILE_APPEND | LOCK_EX) !== false);
+    if (!$saved) {
+        error_log('[WARNING] Failed writing inquiry record to disk storage.');
     }
-    exit;
+} else {
+    error_log('[WARNING] Inquiry disk storage path unavailable; relying on authenticated SMTP delivery.');
 }
-
-$jsonLine = json_encode($record, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . "\n";
-
-// Append with exclusive write lock
-$saved = @file_put_contents($storageFilePath, $jsonLine, FILE_APPEND | LOCK_EX);
-
-if ($saved === false) {
-    error_log('[ERROR] Failed writing inquiry record to secure storage.');
-    http_response_code(500);
-    if ($isAjax) {
-        header('Content-Type: application/json');
-        echo json_encode(['success' => false, 'message' => 'Unable to save inquiry. Please email directly.']);
-    } else {
-        header('Location: ' . site_url('contact.php?status=error'));
-    }
-    exit;
-}
-
-// Update session cooldown and rotate CSRF token
-$_SESSION['last_inquiry_time'] = $currentTime;
-$_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 
 // 6. Dispatch Email Notification (Authenticated SMTP with automatic mail() fallback)
 $emailDispatched = send_inquiry_notification([
@@ -161,6 +138,23 @@ $emailDispatched = send_inquiry_notification([
     'budget_tier' => $budgetTier,
     'raw_message' => $message
 ]);
+
+// Fail only if BOTH disk persistence and email dispatch failed
+if (!$saved && !$emailDispatched) {
+    error_log('[ERROR] Both disk storage and email delivery failed for inquiry.');
+    http_response_code(500);
+    if ($isAjax) {
+        header('Content-Type: application/json');
+        echo json_encode(['success' => false, 'message' => 'Unable to transmit inquiry at this moment. Please email engineerbaah25@gmail.com directly.']);
+    } else {
+        header('Location: ' . site_url('contact.php?status=error'));
+    }
+    exit;
+}
+
+// Update session cooldown and rotate CSRF token
+$_SESSION['last_inquiry_time'] = $currentTime;
+$_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 
 // 7. Optional: Webhook Dispatch for Real-Time Notifications (e.g. Discord, Slack, Zapier, Formspree)
 $webhookUrl = getenv('CONTACT_WEBHOOK_URL') ?: (getenv('WEBHOOK_URL') ?: null);

@@ -167,6 +167,17 @@ function get_inquiry_storage_path(): ?string {
         }
     }
 
+    // Candidate D: Protected data/ directory inside appRoot (guarded by .htaccess + index.php + hashed filename)
+    // Used when strict VPS/panel open_basedir rules prevent writing outside the document root.
+    $protectedDataDir = $appRoot . '/data';
+    if (!is_dir($protectedDataDir)) {
+        @mkdir($protectedDataDir, 0750, true);
+    }
+    if (is_dir($protectedDataDir) && is_writable($protectedDataDir)) {
+        $suffix = substr(hash('sha256', $appRoot . '_eb_ledger'), 0, 16);
+        return $protectedDataDir . '/inquiries_' . $suffix . '.jsonl';
+    }
+
     return null;
 }
 
