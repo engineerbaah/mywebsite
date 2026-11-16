@@ -54,7 +54,11 @@ function send_inquiry_notification(array $inquiry): bool {
 
     $smtpHost = trim((string)(getenv('SMTP_HOST') ?: ''));
     $smtpUser = trim((string)(getenv('SMTP_USER') ?: ''));
-    $smtpPass = (string)(getenv('SMTP_PASS') ?: '');
+    $smtpPass = trim((string)(getenv('SMTP_PASS') ?: ''));
+    if (stripos($smtpHost, 'gmail.com') !== false) {
+        // Google App Passwords are displayed in 4x4 groups with spaces; strip spaces automatically
+        $smtpPass = str_replace(' ', '', $smtpPass);
+    }
     $smtpPort = (int)(getenv('SMTP_PORT') ?: 465);
     $fromEmail = sanitize_email_header((string)(getenv('SMTP_FROM') ?: ($smtpUser !== '' ? $smtpUser : 'no-reply@engineerbaah.com')));
     $fromName = sanitize_email_header((string)(getenv('SMTP_FROM_NAME') ?: 'Engineer Baah Website'));
