@@ -108,7 +108,7 @@ if (!isset($ogImage)) {
           "jobTitle" => "Creative Engineer",
           "description" => SITE_BIO,
           "url" => PRODUCTION_ORIGIN . "/",
-          "image" => canonical_url('assets/images/baah-portrait.webp'),
+          "image" => canonical_url('assets/images/engineer-baah-portrait.webp'),
           "email" => SITE_EMAIL,
           "telephone" => "+233535744202",
           "address" => [

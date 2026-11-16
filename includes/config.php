@@ -38,14 +38,11 @@ $appRoot = str_replace('\\', '/', realpath(__DIR__ . '/..') ?: dirname(__DIR__))
 $docRoot = !empty($_SERVER['DOCUMENT_ROOT']) ? str_replace('\\', '/', realpath($_SERVER['DOCUMENT_ROOT']) ?: $_SERVER['DOCUMENT_ROOT']) : '';
 
 $basePath = '';
-if (!empty(getenv('VERCEL')) || !empty($_SERVER['VERCEL'])) {
-    // Vercel serverless functions execute at root origin
-    $basePath = '';
-} elseif ($docRoot !== '' && strpos($appRoot, $docRoot) === 0) {
+if ($docRoot !== '' && strpos($appRoot, $docRoot) === 0) {
     $basePath = substr($appRoot, strlen($docRoot));
 } elseif (!empty($_SERVER['SCRIPT_NAME'])) {
     $scriptDir = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
-    $basePath = preg_replace('#/(services|includes|api)$#i', '', $scriptDir);
+    $basePath = preg_replace('#/(services|includes)$#i', '', $scriptDir);
 }
 $basePath = rtrim(str_replace('\\', '/', $basePath), '/');
 define('BASE_URL', $basePath === '/' ? '' : $basePath);
@@ -99,15 +96,7 @@ function get_inquiry_storage_path(): ?string {
         }
     }
 
-    // 3. Serverless cloud environment detection (Vercel, AWS Lambda, ephemeral /tmp)
-    if (!empty(getenv('VERCEL')) || !empty($_SERVER['VERCEL'])) {
-        $tmp = rtrim(str_replace('\\', '/', sys_get_temp_dir()), '/');
-        if (is_dir($tmp) && is_writable($tmp)) {
-            return $tmp . '/inquiries.jsonl';
-        }
-    }
-
-    // 4. Dynamic resolution: strictly outside DOCUMENT_ROOT and outside public app root
+    // 3. Dynamic resolution: strictly outside DOCUMENT_ROOT and outside public app root
     $appRoot = str_replace('\\', '/', realpath(__DIR__ . '/..') ?: dirname(__DIR__));
     $docRoot = !empty($_SERVER['DOCUMENT_ROOT']) ? str_replace('\\', '/', realpath($_SERVER['DOCUMENT_ROOT']) ?: $_SERVER['DOCUMENT_ROOT']) : '';
 
@@ -116,7 +105,7 @@ function get_inquiry_storage_path(): ?string {
     // Candidate A: Dedicated storage directory outside web root
     if ($docRoot !== '') {
         $parentDoc = dirname($docRoot);
-        if (in_array(strtolower(basename($parentDoc)), ['htdocs', 'public', 'public_html'], true)) {
+        if (in_array(strtolower(basename($parentDoc)), ['htdocs', 'public', 'public_html', 'html', 'www'], true)) {
             $parentDoc = dirname($parentDoc);
         }
         if ($parentDoc !== '' && $parentDoc !== $docRoot) {
@@ -127,7 +116,7 @@ function get_inquiry_storage_path(): ?string {
 
     // Candidate B: Dedicated storage directory sibling to app root or grandparent
     $parentApp = dirname($appRoot);
-    if (in_array(strtolower(basename($parentApp)), ['htdocs', 'public', 'public_html'], true)) {
+    if (in_array(strtolower(basename($parentApp)), ['htdocs', 'public', 'public_html', 'html', 'www'], true)) {
         $parentApp = dirname($parentApp);
     }
     if ($parentApp !== '' && $parentApp !== $appRoot) {
@@ -167,13 +156,11 @@ function asset_url(string $path): string {
     $cleanPath = ltrim($path, '/');
     $fullPath = __DIR__ . '/../' . $cleanPath;
     if (file_exists($fullPath)) {
-        $mtime = (int)filemtime($fullPath);
-        // Serverless runtimes (e.g. Vercel Lambda) clamp filemtime to 1540000000;
-        // use a fast content hash for CSS/JS or clamped mtimes so cache-busting always updates.
-        if ($mtime <= 1540000000 || preg_match('/\.(css|js)$/i', $cleanPath)) {
+        // Use a fast content hash for CSS/JS so browser and CDN caches bust automatically on deploy
+        if (preg_match('/\.(css|js)$/i', $cleanPath)) {
             $version = substr((string)md5_file($fullPath), 0, 10);
         } else {
-            $version = (string)$mtime;
+            $version = (string)filemtime($fullPath);
         }
     } else {
         $version = '2.1';

@@ -3,14 +3,15 @@
 .env.local
 *.env
 
-# Vercel local metadata
-.vercel/
-
 # Client inquiry records and private storage
 data/
 storage/
 eb-storage/
 *.jsonl
+
+# Local dev scratch & helper scripts
+scratch/
+scripts/
 
 # Node & Package Managers
 node_modules/

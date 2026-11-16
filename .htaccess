@@ -1,4 +1,4 @@
-# Engineer Baah — Apache Server Configuration
+# Engineer Baah — Production VPS Apache / LiteSpeed Configuration
 
 # Disable Directory Listings
 Options -Indexes
@@ -8,14 +8,14 @@ AddDefaultCharset UTF-8
 
 # Security Headers
 <IfModule mod_headers.c>
-    Header set X-Content-Type-Options "nosniff"
-    Header set X-Frame-Options "SAMEORIGIN"
-    Header set X-XSS-Protection "1; mode=block"
-    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
 </IfModule>
 
-# Protect Data and Hidden Files
-<FilesMatch "^\.|\.jsonl$|\.log$">
+# Protect Data, Logs, Configuration and Hidden Files
+<FilesMatch "^\.|\.jsonl$|\.log$|\.md$|\.sql$|\.sh$">
     <IfModule authz_core_module>
         Require all denied
     </IfModule>
@@ -24,19 +24,29 @@ AddDefaultCharset UTF-8
     </IfModule>
 </FilesMatch>
 
+# Gzip Compression for Text Assets
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/json application/xml image/svg+xml
+</IfModule>
+
 # Caching for Static Assets
 <IfModule mod_expires.c>
     ExpiresActive On
-    ExpiresByType image/webp "access plus 1 month"
-    ExpiresByType image/jpeg "access plus 1 month"
-    ExpiresByType image/png "access plus 1 month"
-    ExpiresByType text/css "access plus 1 week"
-    ExpiresByType application/javascript "access plus 1 week"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
 </IfModule>
 
-# URL Rewriting for Clean URLs
+# URL Rewriting & Security Boundaries
 <IfModule mod_rewrite.c>
     RewriteEngine On
+
+    # Block direct external access to internal PHP partials and data directory
+    RewriteRule ^(includes|data)/ - [F,L]
 
     # If file or directory exists, serve directly
     RewriteCond %{REQUEST_FILENAME} -f [OR]
@@ -46,8 +56,13 @@ AddDefaultCharset UTF-8
     # Clean service URLs: /services/{slug} -> services/{slug}.php
     RewriteRule ^services/([a-zA-Z0-9_-]+)/?$ services/$1.php [L,QSA]
 
-    # Clean overview & legal routes
+    # Clean primary & legal routes
     RewriteRule ^services/?$ capabilities.php [L,QSA]
+    RewriteRule ^capabilities/?$ capabilities.php [L,QSA]
+    RewriteRule ^packages/?$ packages.php [L,QSA]
+    RewriteRule ^work/?$ work.php [L,QSA]
+    RewriteRule ^about/?$ about.php [L,QSA]
+    RewriteRule ^contact/?$ contact.php [L,QSA]
     RewriteRule ^privacy/?$ privacy.php [L,QSA]
     RewriteRule ^terms/?$ terms.php [L,QSA]
 </IfModule>

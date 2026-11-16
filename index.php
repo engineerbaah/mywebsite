@@ -80,8 +80,8 @@ $disciplines = get_core_disciplines();
                 src="<?= asset_url('assets/images/engineer-baah-portrait.webp') ?>"
                 alt="Engineer Baah — Isaac Brem Baah, Creative Engineer"
                 class="hero-image"
-                width="900"
-                height="900"
+                width="1254"
+                height="1254"
                 fetchpriority="high"
                 loading="eager"
               >
