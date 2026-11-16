@@ -3341,13 +3341,23 @@ html.js .clip.in {
    17. PACKAGES, BUNDLES & TRANSPARENT PRICING SYSTEM
    ========================================================================== */
 .packages-jump-bar {
-  background: var(--surface-canvas);
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-top: 1px solid var(--border-line);
   border-bottom: 1px solid var(--border-line);
   position: sticky;
-  top: 72px;
-  z-index: 40;
+  top: 0;
+  z-index: 990;
   padding-block: 10px;
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), box-shadow var(--dur-fast) var(--ease-out);
+  will-change: transform;
+}
+.packages-jump-bar.is-stuck {
+  box-shadow: 0 6px 20px -6px rgba(11, 31, 58, 0.08);
+}
+.packages-jump-bar.is-hidden {
+  transform: translateY(-105%);
 }
 
 .packages-jump-nav {
@@ -3381,6 +3391,7 @@ html.js .clip.in {
               border-color var(--dur-fast) var(--ease-out),
               color var(--dur-fast) var(--ease-out);
 }
+.packages-jump-pill.is-active,
 .packages-jump-pill:hover,
 .packages-jump-pill:focus-visible {
   background: var(--c-navy-deep);
@@ -3393,6 +3404,7 @@ html.js .clip.in {
   color: var(--c-sky-deep);
   font-weight: 700;
 }
+.packages-jump-pill.is-active .packages-jump-num,
 .packages-jump-pill:hover .packages-jump-num,
 .packages-jump-pill:focus-visible .packages-jump-num {
   color: #7dd3fc;

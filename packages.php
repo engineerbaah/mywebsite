@@ -138,7 +138,7 @@ $tierGroups = [
 foreach ($tierGroups as $gIdx => $group):
     $sectionClass = ($gIdx % 2 === 1) ? 'section section-subtle' : 'section';
 ?>
-<section id="<?= e($group['id']) ?>" class="<?= $sectionClass ?>" style="scroll-margin-top: 130px;">
+<section id="<?= e($group['id']) ?>" class="<?= $sectionClass ?>" style="scroll-margin-top: 68px;">
   <div class="container">
     <div class="packages-section-head">
       <span class="discipline-code">SECTION <?= e($group['number']) ?></span>
@@ -219,7 +219,7 @@ foreach ($tierGroups as $gIdx => $group):
      4. BRAND & WEBSITE LAUNCH BUNDLES
      ========================================================================== -->
 <?php $bundles = $pkgData['launch_bundles']; ?>
-<section id="<?= e($bundles['id']) ?>" class="section section-subtle" style="scroll-margin-top: 130px;">
+<section id="<?= e($bundles['id']) ?>" class="section section-subtle" style="scroll-margin-top: 68px;">
   <div class="container">
     <div class="packages-section-head">
       <span class="discipline-code">SECTION <?= e($bundles['number']) ?></span>
@@ -288,7 +288,7 @@ foreach ($tierGroups as $gIdx => $group):
      5. DIGITAL SOLUTIONS (CUSTOM SYSTEMS & PORTALS)
      ========================================================================== -->
 <?php $customSol = $pkgData['digital_solutions']; ?>
-<section id="<?= e($customSol['id']) ?>" class="section" style="scroll-margin-top: 130px;">
+<section id="<?= e($customSol['id']) ?>" class="section" style="scroll-margin-top: 68px;">
   <div class="container">
     <div class="packages-section-head">
       <span class="discipline-code">SECTION <?= e($customSol['number']) ?></span>
@@ -351,7 +351,7 @@ $projTerms = $pkgData['project_terms'];
   <div class="container">
     <div class="packages-governance-grid">
       <!-- Section 6: Additional Services & Custom Projects -->
-      <div id="<?= e($addServices['id']) ?>" class="governance-card" style="scroll-margin-top: 130px;">
+      <div id="<?= e($addServices['id']) ?>" class="governance-card" style="scroll-margin-top: 68px;">
         <span class="discipline-code">SECTION <?= e($addServices['number']) ?></span>
         <h2 style="font-family: var(--font-heading); font-size: clamp(1.35rem, 2.2vw, 1.75rem); font-weight: 800; color: var(--c-navy-deep); margin: 4px 0 var(--space-xs) 0;">
           <?= e($addServices['number']) ?>. <?= e($addServices['title']) ?>
@@ -380,7 +380,7 @@ $projTerms = $pkgData['project_terms'];
       </div>
 
       <!-- Section 7: Project Terms -->
-      <div id="<?= e($projTerms['id']) ?>" class="governance-card" style="scroll-margin-top: 130px;">
+      <div id="<?= e($projTerms['id']) ?>" class="governance-card" style="scroll-margin-top: 68px;">
         <span class="discipline-code">SECTION <?= e($projTerms['number']) ?></span>
         <h2 style="font-family: var(--font-heading); font-size: clamp(1.35rem, 2.2vw, 1.75rem); font-weight: 800; color: var(--c-navy-deep); margin: 4px 0 var(--space-md) 0;">
           <?= e($projTerms['number']) ?>. <?= e($projTerms['title']) ?>

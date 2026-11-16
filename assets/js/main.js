@@ -663,21 +663,52 @@
   }
 
   /* ==========================================================================
-     8. SMART AUTO-HIDING STICKY HEADER & READING PROGRESS LINE
+     8. SMART AUTO-HIDING STICKY HEADER, JUMP BAR & READING PROGRESS LINE
      ========================================================================== */
   function initHeaderAndProgress() {
     const header = document.querySelector('.site-header');
+    const jumpBar = document.querySelector('.packages-jump-bar');
+    const jumpPills = jumpBar ? Array.from(jumpBar.querySelectorAll('.packages-jump-pill[href^="#"]')) : [];
     const progressBar = document.getElementById('scroll-progress');
     const mobileDrawer = document.getElementById('mobile-nav-drawer');
 
-    if (!header && !progressBar) return;
+    if (!header && !progressBar && !jumpBar) return;
 
     let lastScrollY = window.scrollY;
     let ticking = false;
+    let jumpBarNaturalTop = jumpBar ? (jumpBar.getBoundingClientRect().top + window.scrollY) : 0;
+
+    window.addEventListener('resize', function () {
+      if (jumpBar) {
+        jumpBar.classList.remove('is-hidden', 'is-stuck');
+        jumpBarNaturalTop = jumpBar.getBoundingClientRect().top + window.scrollY;
+      }
+    }, { passive: true });
+
+    const trackedSections = jumpPills.map(function (pill) {
+      const id = pill.getAttribute('href').slice(1);
+      return { pill: pill, section: document.getElementById(id) };
+    }).filter(function (item) { return Boolean(item.section); });
+
+    function updateActivePill(currentScrollY) {
+      if (trackedSections.length === 0) return;
+      let activeItem = trackedSections[0];
+      const probeLine = currentScrollY + 140;
+      for (let i = 0; i < trackedSections.length; i++) {
+        const top = trackedSections[i].section.offsetTop;
+        if (probeLine >= top) {
+          activeItem = trackedSections[i];
+        }
+      }
+      trackedSections.forEach(function (item) {
+        item.pill.classList.toggle('is-active', item === activeItem);
+      });
+    }
 
     function onScroll() {
       const currentScrollY = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const deltaY = currentScrollY - lastScrollY;
 
       // Update reading progress bar
       if (progressBar) {
@@ -685,10 +716,29 @@
         progressBar.style.transform = `scaleX(${progress})`;
       }
 
-      // Auto-hide / reveal header (preserve if mobile drawer open)
-      if (header) {
-        const isDrawerOpen = mobileDrawer && mobileDrawer.classList.contains('is-open');
-        if (!isDrawerOpen) {
+      const isDrawerOpen = mobileDrawer && mobileDrawer.classList.contains('is-open');
+
+      if (!isDrawerOpen) {
+        if (jumpBar) {
+          const threshold = Math.max(160, jumpBarNaturalTop - 78);
+          if (currentScrollY >= threshold) {
+            // Replace the main navbar at the extreme top with the jump bar
+            if (header) header.classList.add('is-hidden');
+            jumpBar.classList.add('is-stuck');
+
+            // Hide jump bar while actively scrolling down to read; reveal on scroll up
+            if (deltaY > 6 && currentScrollY > threshold + 110) {
+              jumpBar.classList.add('is-hidden');
+            } else if (deltaY < -4) {
+              jumpBar.classList.remove('is-hidden');
+            }
+          } else {
+            // Above the jump bar threshold: restore main header and keep jump bar in document flow
+            if (header) header.classList.remove('is-hidden');
+            jumpBar.classList.remove('is-stuck', 'is-hidden');
+          }
+          updateActivePill(currentScrollY);
+        } else if (header) {
           if (currentScrollY > lastScrollY && currentScrollY > 180) {
             header.classList.add('is-hidden');
           } else if (currentScrollY < lastScrollY || currentScrollY <= 100) {
