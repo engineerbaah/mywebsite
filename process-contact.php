@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/includes/config.php';
+require_once __DIR__ . '/includes/mailer.php';
 
 // Only allow POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -149,7 +150,19 @@ if ($saved === false) {
 $_SESSION['last_inquiry_time'] = $currentTime;
 $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 
-// Optional: Webhook Dispatch for Cloud / Serverless Notifications (e.g. Discord, Slack, Zapier, Formspree)
+// 6. Dispatch Email Notification (Authenticated SMTP with automatic mail() fallback)
+$emailDispatched = send_inquiry_notification([
+    'timestamp' => $record['timestamp'],
+    'full_name' => $fullName,
+    'email' => $email,
+    'organization' => $organization,
+    'phone' => $phone,
+    'discipline' => $discipline,
+    'budget_tier' => $budgetTier,
+    'raw_message' => $message
+]);
+
+// 7. Optional: Webhook Dispatch for Real-Time Notifications (e.g. Discord, Slack, Zapier, Formspree)
 $webhookUrl = getenv('CONTACT_WEBHOOK_URL') ?: (getenv('WEBHOOK_URL') ?: null);
 if ($webhookUrl && filter_var($webhookUrl, FILTER_VALIDATE_URL)) {
     $payload = json_encode([

@@ -20,6 +20,27 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+// Load environment variables from .env (parent directory or project root) if present
+foreach ([dirname(__DIR__, 2) . '/.env', dirname(__DIR__) . '/.env'] as $envFile) {
+    if (is_file($envFile) && is_readable($envFile)) {
+        $lines = file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) ?: [];
+        foreach ($lines as $line) {
+            $trimmed = trim($line);
+            if ($trimmed === '' || $trimmed[0] === '#' || strpos($trimmed, '=') === false) {
+                continue;
+            }
+            [$k, $v] = explode('=', $trimmed, 2);
+            $key = trim($k);
+            $val = trim($v, " \t\n\r\0\x0B\"'");
+            if ($key !== '' && getenv($key) === false) {
+                putenv($key . '=' . $val);
+                $_ENV[$key] = $val;
+            }
+        }
+        break;
+    }
+}
+
 // Brand & Site Constants
 define('SITE_NAME', 'Engineer Baah');
 define('SITE_TAGLINE', 'Creative Engineer — Technology, Design & Execution');
